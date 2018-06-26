@@ -1,0 +1,46 @@
+# genika to figure size
+fig = plt.figure(figsize=(16, 20))
+
+## Generate first column of line charts. STEM degrees.
+# 18 thesis me vima 3 diladi 6,12,18
+for sp in range(0,18,3):
+    # pare mono tin proti stili
+    cat_index = int(sp/3)
+    prosthese to fig sto grid 6 gramon kai 3on stilon tis times tis protis stilis sp+1 
+    ax = fig.add_subplot(6,3,sp+1)
+    # vale sts grafimats afts tis parakato times
+    ax.plot(women_degrees['Year'], women_degrees[stem_cats[cat_index]], c=cb_dark_blue, label='Women', linewidth=3)
+    ax.plot(women_degrees['Year'], 100-women_degrees[stem_cats[cat_index]], c=cb_orange, label='Men', linewidth=3)
+    # svise ta spines these ston x kai ton y times
+    for key,spine in ax.spines.items():
+        spine.set_visible(False)
+    ax.set_xlim(1968, 2011)
+    ax.set_ylim(0,100)
+    # vale titlous apo tin categoria sta grafimata
+    ax.set_title(stem_cats[cat_index])
+    # svise ta ticks
+    ax.tick_params(bottom="off", top="off", left="off", right="off")
+    # prosthese pano stis grames tous titlous ton dedomenon
+    if cat_index == 0:
+        ax.text(2003, 85, 'Women')
+        ax.text(2005, 10, 'Men')
+    elif cat_index == 5:
+        ax.text(2005, 87, 'Men')
+        ax.text(2003, 7, 'Women')
+
+## Generate second column of line charts. Liberal arts degrees.
+for sp in range(1,16,3):
+    cat_index = int((sp-1)/3)
+    ax = fig.add_subplot(6,3,sp+1)
+    ax.plot(women_degrees['Year'], women_degrees[lib_arts_cats[cat_index]], c=cb_dark_blue, label='Women', linewidth=3)
+    ax.plot(women_degrees['Year'], 100-women_degrees[lib_arts_cats[cat_index]], c=cb_orange, label='Men', linewidth=3)
+    for key,spine in ax.spines.items():
+        spine.set_visible(False)
+    ax.set_xlim(1968, 2011)
+    ax.set_ylim(0,100)
+    ax.set_title(lib_arts_cats[cat_index])
+    ax.tick_params(bottom="off", top="off", left="off", right="off")
+    
+    if cat_index == 0:
+        ax.text(2003, 78, 'Women')
+        ax.text(2005, 18, 'Men')
